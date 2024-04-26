@@ -5,12 +5,22 @@ A comprehensive Clojure client for the entire [Amazon AWS API][1].
 
 [![amazonica](https://circleci.com/gh/mcohen01/amazonica.svg?style=shield)](https://app.circleci.com/pipelines/github/mcohen01/amazonica)
 
+## Fork
+
+Fork of Amazonica with the following changes:
+
+-
+
+Publishing:
+
+Run `lein deploy` with credentials from Clojars.
+
 
 ## Installation
 
 Leiningen coordinates:
 ```clj
-[amazonica "0.3.167"]
+[amazonica "0.3.167-signal-1"]
 ```
 
 For Maven users:
