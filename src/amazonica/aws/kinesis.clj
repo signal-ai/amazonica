@@ -203,7 +203,12 @@
                                           initial-lease-table-write-capacity]
                                    :or {worker-id (str (UUID/randomUUID))}}]
   (cond-> (KinesisClientLibConfiguration. (name app)
-                                          (name stream)
+                                          (cond
+                                            (keyword? stream) (name stream)
+                                            (instance? com.amazonaws.arn.Arn stream) (-> stream
+                                                                                         (.getResource)
+                                                                                         (.getResource))
+                                            :else stream)
                                           provider
                                           (or dynamodb-credentials-provider provider)
                                           (or cloudwatch-credentials-provider provider)
@@ -286,7 +291,10 @@
     (.withInitialLeaseTableReadCapacity initial-lease-table-read-capacity)
 
     initial-lease-table-write-capacity
-    (.withInitialLeaseTableWriteCapacity initial-lease-table-write-capacity)))
+    (.withInitialLeaseTableWriteCapacity initial-lease-table-write-capacity)
+
+    (instance? com.amazonaws.arn.Arn stream)
+    (.withStreamArn stream)))
 
 (defn worker
   "Instantiate a kinesis Worker."
