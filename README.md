@@ -9,7 +9,7 @@ A comprehensive Clojure client for the entire [Amazon AWS API][1].
 
 Fork of Amazonica with the following changes:
 
--
+- https://github.com/signal-ai/amazonica/commit/dd8a352395b860d7cfebb382b38ab5bab335a1a4 make dynamodb/cloudwatch credentials providers available to KCL
 
 Publishing:
 
